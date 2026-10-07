@@ -119,6 +119,8 @@ Matrix of 4 fixed columns cannot hold unlimited company roles or 50 permissions.
 
 ## 7. Where things live (v2)
 
+**Run it:** double-click `serve-design.bat` (or `serve-design.bat 5190` for another port) and open http://localhost:5180/. It serves this folder with Python's built-in web server, bound to localhost, and opens the browser. If Python 3 is missing it installs Python 3.12 for the current user by itself (winget, or the official python.org installer as a fallback), no admin rights needed.
+
 Routes (same shape as the shipped portal): `#/user-management/{employees|customers|roles}`, `.../employees/:id`, `.../employees/new`, `.../employees/:id/edit`, `.../customers/:id`, `#/my-profile`.
 Old flat links (`#/employees`) still resolve through `ALIAS` in `js/shell.js`.
 
