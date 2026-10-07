@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SiteOS · Operations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..800&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/extend.css">
+</head>
+<body>
+<div class="progress" id="progress"><i></i></div>
+<div class="shell" id="shell">
+<aside class="side" id="side" aria-label="Main navigation">
+  <a class="brand" href="#/dash" aria-label="SiteOS home"><span class="mk">S</span><span class="bt"><b>SiteOS</b><small>Operations</small></span></a>
+  <nav id="nav" aria-label="Sections"></nav>
+  <div class="side-foot">
+    <button class="who" type="button" data-do="switch-company"><span class="av">NC</span><span class="tx"><b>Northline Civil</b><small>Switch company</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l4-4 4 4M8 15l4 4 4-4"/></svg></button>
+    <div class="userrow"><a class="userlink" href="#/my-profile" id="userLink" title="My profile"><span class="me" id="meAv">AM</span><span class="tx"><b id="meName">Alex Morgan</b><small id="meRole">Owner</small></span></a><button class="iconbtn" type="button" aria-label="Log out" title="Log out" id="logoutBtn"></button></div>
+  </div>
+</aside>
+<div class="scrimside" id="scrimSide"></div>
+<div class="main">
+<header class="chrome" id="chrome">
+  <div class="topbar">
+    <button class="iconbtn menubtn" type="button" id="menuBtn" aria-label="Open menu"></button>
+    <button class="searchbox" type="button" id="cmdBtn"></button>
+    <div class="grow"></div>
+    <label class="persona" title="Preview the portal as a different person"><span>View as</span><select id="personaSel" aria-label="View as"></select></label>
+    <div class="qv-live"><span class="bl"></span><span>Last updated</span><b class="num">07:42</b></div>
+    <button class="iconbtn" type="button" id="resetBtn"></button>
+    <button class="iconbtn theme" type="button" id="themeBtn" aria-label="Toggle dark mode"></button>
+    <button class="iconbtn" type="button" id="bellBtn" aria-label="Notifications, 4 unread"></button>
+  </div>
+</header>
+<div class="pagehead">
+  <div class="grow"><nav class="crumbs" id="pgCrumbs" aria-label="Breadcrumb" hidden></nav><h1 id="pgTitle"></h1><div class="sub" id="pgSub"></div></div>
+  <div class="pgact" id="pgAct"></div>
+</div>
+<main class="content" id="app"></main>
+</div>
+</div>
+
+<div class="pal" id="pal">
+  <div class="scrim" data-close></div>
+  <div class="box" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="in" id="palIn"></div>
+    <div class="list" id="palList" role="listbox"></div>
+    <div class="foot"><span><span class="kbd">↑</span><span class="kbd">↓</span>navigate</span><span><span class="kbd">↵</span>open</span><span><span class="kbd">esc</span>close</span></div>
+  </div>
+</div>
+<div class="modal-wrap" id="modalWrap"><div class="modal" id="modal"></div></div>
+<div class="drawer-wrap" id="drawerWrap"><aside class="drawer" id="drawer" role="dialog" aria-modal="true"></aside></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<div id="authRoot"></div>
+
+<script src="js/core.js"></script>
+<script src="js/data.js"></script>
+<script src="js/data-ops.js"></script>
+<script src="js/data-fleet.js"></script>
+<script src="js/data-company.js"></script>
+<script src="js/kit.js"></script>
+<script src="js/kit-extra.js"></script>
+<script src="js/views-um.js"></script>
+<script src="js/views-roles.js"></script>
+<script src="js/views-employees.js"></script>
+<script src="js/views-customers.js"></script>
+<script src="js/views-me.js"></script>
+<script src="js/views-jobs.js"></script>
+<script src="js/views-scheduler.js"></script>
+<script src="js/views-timeclock.js"></script>
+<script src="js/views-jsas.js"></script>
+<script src="js/views-assets.js"></script>
+<script src="js/views-vehicles.js"></script>
+<script src="js/views-journeys.js"></script>
+<script src="js/views-company.js"></script>
+<script src="js/views-rulesets.js"></script>
+<script src="js/views-platform.js"></script>
+<script src="js/views-auth.js"></script>
+<script src="js/views-states.js"></script>
+<script src="js/views-dash.js"></script>
+<script src="js/banners.js"></script>
+<script src="js/shell.js"></script>
+</body>
+</html>
