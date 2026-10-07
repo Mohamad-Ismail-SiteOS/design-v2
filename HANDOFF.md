@@ -7,7 +7,7 @@ Prepared 2026-10-08 for the `site-os-portal` implementation, which starts 2026-1
 ## 1. What this is and how to use it
 
 - The prototype is **static HTML, CSS and JavaScript with mock data**: no build step, a hash router, one global scope. It is a visual and behavioural reference, **not code to port**. The CSS tokens and layout ideas carry over; the JavaScript does not.
-- It lives in `SiteOs/design-v2/` next to the repos. That folder is a local git repo with no remote yet: `main` is the version to build from, branch `multi-company` is an archived variant with multi-company switching (not in scope, see section 2). It can be pushed to its own GitHub repo if the team wants a shared copy.
+- It lives in the private GitHub repo `Mohamad-Ismail-SiteOS/design-v2` (and locally in `SiteOs/design-v2/` next to the other repos). `main` is the version to build from; branch `multi-company` is an archived variant with multi-company switching (not in scope, see section 2). This repo is the single source of truth for the design context; the portal repo does not carry a copy of this document.
 - **Run it:** double-click `serve-design.bat` (installs Python 3.12 for the current user if it is missing), then open <http://localhost:5180/>.
 - **Explore it:**
   - *View as* switcher in the top bar: Owner, Superuser, Admin, Supervisor, Employee. It shows what each permission level sees. The `perm` strings in the prototype are the same claim names as the portal's `Permission` enum (for example `view:company` is `Permission.ViewCompany`).
