@@ -127,7 +127,7 @@ INIT.employees.forEach((e,i)=>{
  const x=EMP_X[slug(e.name)]||['employee','','',null,'',['','',''],null,true,e.type];
  const parts=e.name.split(' ');
  Object.assign(e,{id:slug(e.name),first:parts[0],last:parts.slice(1).join(' '),roleId:x[0],acct:ACCT_OF[slug(e.name)]||'EMPLOYEE',started:x[1],hourly:x[2]===''?null:x[2],cost:x[3],address:x[4],
-  nok:x[5]||['','',''],emerg:x[6],inSched:x[7],basis:x[8],username:e.email.split('@')[0],verified:e.st!=='invited',mfa:e.st==='active'&&i%3!==2,rules:i%4===3?'Contractors':'Standard award'});
+  nok:x[5]||['','',''],emerg:x[6],inSched:x[7],basis:x[8],username:e.email.split('@')[0],verified:e.st!=='invited',mfa:e.st==='active'&&i%3!==2,rules:'Standard Overtime'});
 });
 
 /* documents: [name, type, expiryLabel, daysLeft, visibility] */

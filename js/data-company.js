@@ -20,11 +20,8 @@ const RULE_TYPE_NAME=Object.fromEntries(RULE_TYPES);
 const WD=['mon','tue','wed','thu','fri','sat','sun'],WD_NAME={mon:'Mon',tue:'Tue',wed:'Wed',thu:'Thu',fri:'Fri',sat:'Sat',sun:'Sun'};
 const daysFor=t=>t==='overtime'?['mon','tue','wed','thu','fri']:t==='weekend_overtime'?['sat','sun']:WD.slice();
 INIT.company.rulesets=[
- {id:'rs1',name:'Standard award',description:'Full time and casual staff on the standard award.',status:'active',isDefault:true,emp:39,hr:{on:true,from:'22:00',to:'05:00',mult:'1.25'},
-  items:[{id:'ri1',type:'overtime',label:'Overtime tier 1',mult:'1.5',after:'8',days:daysFor('overtime'),holiday:false,prio:1},{id:'ri2',type:'overtime',label:'Overtime tier 2',mult:'2',after:'10',days:daysFor('overtime'),holiday:false,prio:2},{id:'ri3',type:'penalty',label:'Public holiday',mult:'2.5',after:'0',days:WD.slice(),holiday:true,prio:3}]},
- {id:'rs2',name:'Weekend site work',description:'Weekend crews on civil sites.',status:'active',isDefault:false,emp:46,hr:{on:false,from:'',to:'',mult:''},
-  items:[{id:'ri4',type:'weekend_overtime',label:'Saturday',mult:'1.5',after:'0',days:['sat'],holiday:false,prio:1},{id:'ri5',type:'weekend_overtime',label:'Sunday',mult:'2',after:'0',days:['sun'],holiday:true,prio:2}]},
- {id:'rs3',name:'Contractors',description:'Flat rate, no overtime.',status:'active',isDefault:false,emp:3,hr:{on:false,from:'',to:'',mult:''},items:[]}
+ {id:'rs1',name:'Standard Overtime',description:'Default overtime rules — edit or replace anytime.',status:'active',isDefault:true,emp:48,hr:{on:true,from:'22:00',to:'05:00',mult:'1.25'},
+  items:[{id:'ri1',type:'overtime',label:'Overtime tier 1',mult:'1.5',after:'8',days:daysFor('overtime'),holiday:false,prio:1},{id:'ri2',type:'overtime',label:'Overtime tier 2',mult:'2',after:'10',days:daysFor('overtime'),holiday:false,prio:2},{id:'ri3',type:'penalty',label:'Public holiday',mult:'2.5',after:'0',days:WD.slice(),holiday:true,prio:3}]}
 ];
 const rsSummary=r=>{
  const p=r.items.map(i=>`${i.label} ${i.mult}×${+i.after?' after '+i.after+' h':''}`);

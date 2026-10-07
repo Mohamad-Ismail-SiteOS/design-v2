@@ -189,7 +189,7 @@ DO['emp-save']=()=>{
   }else if(e.acct==='EMPLOYEE'&&d.roleId&&d.roleId!==oldRole){const a=roleOf(oldRole),b=roleOf(d.roleId);if(a)a.count=Math.max(a.count-1,0);b.count++;e.roleId=d.roleId;e.ovr={};note=' \u00b7 role changed, overrides cleared';}
   toast('Employee updated',e.name+note);go('user-management/employees/'+e.id);
  }else{
-  const n={...f,id:slug(f.name),username:d.email.split('@')[0],roleId:(d.acct==='SUPERUSER'?null:d.roleId),acct:d.acct==='SUPERUSER'&&isOwnerAcct()?'SUPERUSER':'EMPLOYEE',started:'1 Oct 2026',hrs:null,docs:'None yet',st:d.invite==='1'?'invited':'active',type:d.basis==='Casual'?'Casual':d.basis==='Contractor'?'Contractor':'Full time',verified:false,mfa:false,docList:[],notes:[],ovr:{},rules:'Standard award'};
+  const n={...f,id:slug(f.name),username:d.email.split('@')[0],roleId:(d.acct==='SUPERUSER'?null:d.roleId),acct:d.acct==='SUPERUSER'&&isOwnerAcct()?'SUPERUSER':'EMPLOYEE',started:'1 Oct 2026',hrs:null,docs:'None yet',st:d.invite==='1'?'invited':'active',type:d.basis==='Casual'?'Casual':d.basis==='Contractor'?'Contractor':'Full time',verified:false,mfa:false,docList:[],notes:[],ovr:{},rules:'Standard Overtime'};
   S.employees.push(n);if(n.roleId)roleOf(n.roleId).count++;
   toast(d.invite==='1'?'Employee created and invite sent':'Employee created',n.name+(d.invite==='1'?' · by email and SMS':''));go('user-management/employees/'+n.id);
  }

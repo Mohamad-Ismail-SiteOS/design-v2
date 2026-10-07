@@ -107,13 +107,15 @@ Matrix of 4 fixed columns cannot hold unlimited company roles or 50 permissions.
 | 4 Company | Company edit, ruleset editor, notification editor, journey settings, audit log, collaboration/shared jobs, companies (platform) | after |
 | 5 Auth and states | Login, register, verify, 2FA, forgot/reset, onboarding gate, 403/404, empty/error/loading catalogue, dashboard customise | after |
 
-## 6. Open questions for the team
-1. Photos: provide the missing `assets/prototype-photos`, or go initials-only?
-2. Dashboard widgets with no API (attendance, funnel, needs-attention): keep as roadmap items or drop?
-3. ~~Sidebar: three People items or one User Management with tabs?~~ Decided: one item with tabs, as shipped.
-4. Dark mode: ship it (design has it, product doesn't)?
-
-**Decided 2026-10-08, ahead of implementation in the portal:** the stand-in imagery (login photo, drawn banners) is approved as is. The open questions above are not blocking: where the prototype and the shipped portal differ, match them case by case as fits best while implementing. Touch behaviour (the `pointer:coarse` hit-area rules) gets tested on a real touch screen during the portal implementation.
+## 6. Decisions for the team (open questions, answered 2026-10-08, ahead of implementation in the portal)
+1. ~~Photos~~ **Initials only for now.** Logos and the missing assets get added when they are provided. The login photo and the drawn page banners are approved as stand-ins.
+2. ~~Dashboard widgets with no API~~ **Keep as dummy data, build them last.** Wire everything that already has an API first, then add the APIs for the widgets.
+3. ~~Sidebar: three People items or one User Management with tabs?~~ One item with tabs, as shipped.
+4. ~~Dark mode~~ **Ship it.** The toggle is in the top bar and remembers the choice; it defaults to light.
+5. ~~Overtime rulesets~~ **Follow the portal.** One seeded ruleset, "Standard Overtime" (default), editable, plus add and delete as the portal allows.
+6. ~~Multi-company~~ **Not in the product for now, and not in the design.** One account is one company: the sidebar shows the company name as a label (no switcher), My Company has no "All companies" button, and `#/companies` and `#/companies/new` are removed (Page not found). The shipped portal's `/companies` is for SiteOS platform staff only and is out of scope here. The pages are kept dormant in `js/views-platform.js` (`MULTI_COMPANY=false`) and the complete working version is on the local git branch `multi-company`.
+7. **Job statuses** (how Planned, On hold and Completed get set): revisit when the Jobs work starts and ask the team lead or project owner.
+8. Anything else where the prototype and the shipped portal differ: match them case by case as fits best while implementing. Touch behaviour (the `pointer:coarse` hit-area rules) gets tested on a real touch screen during the portal implementation.
 
 ## 7. Where things live (v2)
 
@@ -197,11 +199,11 @@ Files: `js/data-company.js`, `js/views-company.js`, `js/views-rulesets.js`, `js/
 - **Ruleset editor** (`company/rulesets/:id`, a page instead of the shipped dialog): details, the pinned Time Range Multiplier card, rule cards (type, name, multiplier, applies after, applies on days, public holidays) with the shipped validation (tiers must rise per day group, Overtime fixed Mon-Fri, Weekend Overtime Sat/Sun only, From and To can't match). No "Add ruleset" button: the shipped portal turns creation off (one seeded ruleset). v2 keeps the designer's three rulesets, which is an open question below.
 - **Journey Management**: Journey plans, On the road, Weather, Records and reports groups (fields reveal as in the shipped form) plus the signed-in user's own Push / Email grid, one Save. Non-editors see only their own channels.
 - **Notifications**: one rule per type (Employee document expiry, Asset notifications, Vehicle notifications), period 1 or 2 months, Email / SMS, company users plus external emails; picking a type prefills it. Shift reminder and weekly digest are left out because the shipped form hides them.
-- **Companies** (owner only): list, Add company (same sections minus the ones that need an existing company), type-to-confirm delete, sidebar switcher drawer. Switching to another company is explained but not simulated.
+- **Companies** (owner only): list, Add company (same sections minus the ones that need an existing company), type-to-confirm delete, sidebar switcher drawer. Switching to another company is explained but not simulated. **Switched off 2026-10-08 (see section 6, item 6); the full version is on the `multi-company` branch.**
 - **Audit logs** (`view:audit:logs`): shipped filters (Object ID, Actor, Type, Source Active / Archive, From / To with the 6-month rules) and columns, plus a Date column.
 - **Page banners**: every page now has a slim themed banner (`js/banners.js`, inline SVG art from the colour tokens, tagline plus a live count). One theme per area: dashboard skyline with crane, company building, people, jobs crane and site, JSAs shield and clipboard, scheduler calendar, time clock face, assets tools, vehicles ute on a road, journeys route, profile, audit and companies. Works in dark mode; art fades on narrow screens.
 - Tested in the browser as owner: company edit validation and save, round cards, block-inspection toggle, journey settings and prefs, notification editor (prefill, validation, dedupe, save), ruleset editor (add, tier, days and time-range validation, type change, delete, save), companies (switcher, delete, add), audit filters. Admin / supervisor / employee gating checked.
-- Open: designer's three rulesets vs one seeded ruleset in the shipped portal; multi-company switching; onboarding gate (SIT-693) page-pin not designed; collaboration invitations stay on the Jobs "Shared with me" tab.
+- Resolved 2026-10-08 (section 6): one seeded ruleset, no multi-company. Still open: onboarding gate (SIT-693) page-pin not designed; collaboration invitations stay on the Jobs "Shared with me" tab.
 
 ## Auth, states and dashboard: what v2 does (phase 5, built 2026-10-07)
 Files: `js/views-auth.js`, `js/views-states.js`, `js/views-dash.js`. Auth screens are full-screen (`body.authmode`, `#authRoot`), outside the app shell, with the same routes as the shipped portal.

@@ -761,3 +761,6 @@ hr.sep{border:0;border-top:1px solid var(--border-soft);margin:6px 0 20px}
 .pal .list{overflow-x:hidden}
 .pal .row .m{flex:0 1 auto;min-width:0;max-width:58%;overflow:hidden;text-overflow:ellipsis;text-align:right}
 @media (max-width:560px){.pal .row .m{max-width:42%}}
+
+/* the company in the sidebar footer is a label (one company per account), not a button */
+.who.static{cursor:default}.who.static:hover{border-color:var(--border);background:var(--surface)}

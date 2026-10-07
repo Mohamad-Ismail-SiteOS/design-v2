@@ -6,6 +6,10 @@
      Object ID, Class Name, Actor, Event Name, Property Name, Old / New Value
    ===================================================================== */
 const cmpOf=id=>S.companies.find(c=>c.id===+id);
+/* Multi-company is not part of SiteOS yet: one account is one company, no switcher in the sidebar, no "All companies" button.
+   The shipped portal only has /companies for SiteOS platform staff. These two pages are kept in this file as a dormant design; the routes are removed below while MULTI_COMPANY is false,
+   so #/companies and #/companies/new are unknown addresses (Page not found). The full working version lives on the git branch multi-company. */
+const MULTI_COMPANY=false;
 const onlyOwner=(v,what)=>`<div class="page"><section class="qv-card">${emptyBlock('key','Only the owner can '+what,'Ask the account owner to do this, or to grant you access from Roles.',`<button type="button" class="btn btn-ghost" data-go="company">Back to My Company</button>`)}</section></div>`;
 
 /* ---------- Companies ---------- */
@@ -78,3 +82,4 @@ DO['au-filter']=()=>{
 };
 DO['au-page']=d=>{AU.page=+d.p;rerender(true);scrollTo(0,0);};
 document.addEventListener('change',e=>{const s=e.target.closest('[data-aulimit]');if(s){AU.limit=+s.value;AU.page=1;rerender(true);}});
+if(!MULTI_COMPANY){delete VIEWS.companies;delete VIEWS['company-new'];}
