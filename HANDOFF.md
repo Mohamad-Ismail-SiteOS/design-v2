@@ -63,7 +63,7 @@ The brand blue and the text colour are the portal's own palette values, so the t
 | `--text` | `#1D202A` | `#E8ECF4` | `navy.c700`, exact |
 | `--text-muted` | `#4A5163` | `#B3BBCB` | `navy.c450` `#464E64`, close |
 | `--text-subtle` | `#5D6476` | `#A0A9BB` | **no match** (nearest is `navy.c400` `#57617D`) |
-| `--text-faint` | `#6B7284` | `#8A93A6` | **no match** (nearest is `navy.c350`, see 4.3) |
+| `--text-faint` | `#646C7D` | `#8A93A6` | **no match** (nearest is `navy.c350`, see 4.3) |
 | `--border`, `--border-soft`, `--border-strong` | `#E3E7EE`, `#EEF1F5`, `#D2D8E2` | `#272E3B`, `#1F2530`, `#364052` | `navy.c100`, `skyBlue.c150`, `navy.c150`, close |
 | `--ok` / `--ok-soft` | `#1E7A4F` / `#E5F4EC` | `#4CC38A` / `#10261C` | **no match** for the text colour (nearest `emerald.c700` `#047857`); soft is `emerald.c50`, close |
 | `--warn` / `--warn-soft` | `#8A5A08` / `#FBF3E1` | `#DDAA37` / `#2A2110` | **no match** (nearest `glow.c800` `#7C5900`); soft is `glow.c150`, close |
@@ -82,7 +82,7 @@ Moving `primary.main` to `c700` (with `dark` = `c750` and `light` = `c500`) is t
 ### 4.3 Typography
 
 - Prototype: **Geist** for text and **Geist Mono** for plate numbers, codes and key hints, 14px base, tabular numbers on (`font-variant-numeric: tabular-nums`) so figures line up. The portal uses **Poppins** (`src/index.scss` and the theme). Decision: adopt Geist (self-host it, for example with a `@fontsource` package) or stay on Poppins. Moving to Geist is a theme and global-style change, not a per-screen one.
-- **Do not snap text greys to the nearest palette step.** `--text-faint` is 4.81:1 on white and 4.56:1 on the page background. `navy.c350` (`#697596`) would be 4.58:1 on white but **4.34:1 on `skyBlue.c100`, which fails AA** for body text. `--text-subtle` is fine either way but is not an exact step. Use the token values.
+- **Do not snap text greys to the nearest palette step.** `--text-faint` is 5.27:1 on white and 4.91:1 on the page background (it was `#6B7284` until the portal's contrast test found that on the `#F5F7FA` page background it was 4.48:1, just under AA; it is `#646C7D` now). `navy.c350` (`#697596`) would be 4.58:1 on white but **4.34:1 on `skyBlue.c100`, which fails AA** for body text. `--text-subtle` is fine either way but is not an exact step. Use the token values.
 
 ### 4.4 Shape, size and elevation
 
@@ -277,7 +277,7 @@ Copied verbatim from the prototype's `css/base.css`. The names are what the port
   --brand-050:#EEF2FA; --brand-100:#DCE4F4; --brand-200:#BAC7E5;
   --act:#3F5EA6; --act-hover:#34508F; --on-act:#fff;
   --paper:#F5F7FA; --surface:#FFFFFF; --surface-2:#FAFBFD; --surface-3:#F2F4F8; --surface-sunk:#EAEDF3;
-  --text:#1D202A; --text-muted:#4A5163; --text-subtle:#5D6476; --text-faint:#6B7284;
+  --text:#1D202A; --text-muted:#4A5163; --text-subtle:#5D6476; --text-faint:#646C7D;
   --border:#E3E7EE; --border-soft:#EEF1F5; --border-strong:#D2D8E2;
   --ok:#1E7A4F; --ok-soft:#E5F4EC;
   --warn:#8A5A08; --warn-soft:#FBF3E1; --warn-dot:#D9A441;
