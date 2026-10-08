@@ -1,0 +1,51 @@
+name: Deploy prototype to GitHub Pages
+
+# Publishes only the prototype itself (index.html, css, js, assets) to GitHub Pages.
+# PLAN.md, HANDOFF.md and serve-design.bat are not part of the site.
+# A noindex tag is added to the published copy so search engines skip it; the repo's own
+# index.html is left untouched.
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - css/**
+      - js/**
+      - assets/**
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble the site
+        run: |
+          mkdir _site
+          cp -r index.html css js assets _site/
+          touch _site/.nojekyll
+          sed -i 's|<head>|<head>\n<meta name="robots" content="noindex, nofollow">|' _site/index.html
+          find _site -type f | sort
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
